@@ -1,0 +1,17 @@
+{
+  "name": "create-react-boilerplate-hoil",
+  "version": "1.0.0",
+  "description": "react boilerplate made by hoil",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
+  }
+}
