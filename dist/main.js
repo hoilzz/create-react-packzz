@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _math__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./math */ \"./src/math.js\");\n\nvar result = Object(_math__WEBPACK_IMPORTED_MODULE_0__[\"add\"])(5, 3);\nconsole.log('5 + 3 : ', result);\nresult = Object(_math__WEBPACK_IMPORTED_MODULE_0__[\"subtract\"])(5, 3);\nconsole.log('5 = 3 : ', result);\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _math__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./math */ \"./src/math.js\");\n\n\nlet result = Object(_math__WEBPACK_IMPORTED_MODULE_0__[\"add\"])(5,3);\nconsole.log('5 + 3 : ', result);\nresult = Object(_math__WEBPACK_IMPORTED_MODULE_0__[\"subtract\"])(5, 3)\nconsole.log('5 = 3 : ', result);\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -106,7 +106,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mat
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"add\", function() { return add; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"subtract\", function() { return subtract; });\nvar add = function add(a, b) {\n  return a + b;\n};\nvar subtract = function subtract(a, b) {\n  return a - b;\n};\n\n//# sourceURL=webpack:///./src/math.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"add\", function() { return add; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"subtract\", function() { return subtract; });\nconst add = (a, b) => a + b;\nconst subtract = (a, b) => a - b;\n\n\n//# sourceURL=webpack:///./src/math.js?");
 
 /***/ })
 
