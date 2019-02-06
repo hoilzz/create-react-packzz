@@ -51,11 +51,14 @@ console.log("5 = 3 : ", result);
 
 ```js
 // webpack.config.js에 module 추가.
+const path = require('path');
+
 module: {
   rules: [
     {
       test: /\.js$/,
       exclude: /node_modules/,
+      include: path.resolve(__dirname, 'src'),
       use: {
         loader: 'babel-loader',
       }
@@ -114,3 +117,9 @@ preset은 바벨 플러그인의 배열처럼 행동하는데, 플러그인들�
   - 말 그대로 각 파일에서 사용되는 polyfill만 import함.
     - 근데 해당 브라우저에서 지원하는 syntax일 경우 import 하지 않음. 즉, 조건 하나를 더 추가(브라우저에서 지원하지 않을 경우) 하여 import
   - 예제를 보고 싶거나 자세히 알고 싶으면 [링크](https://babeljs.io/docs/en/babel-preset-env#usebuiltins) 이동
+
+## Summary
+
+- 바벨은 하위 브라우저에 대응하기 위한 JS Compiler다.
+  - ES6+ code를 ES5로 변경해준다.
+  - 이 때 변경 규칙은, preset, plugin이 존재하면 이것을 따른다.
