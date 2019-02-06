@@ -1,5 +1,7 @@
 const path = require("path");
 
+const webpack = require("webpack");
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
@@ -12,10 +14,11 @@ module.exports = {
     new CleanWebpackPlugin(["dist"]),
     new HtmlWebpackPlugin({
       title: "Output Management"
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   output: {
-    filename: "[name].[contenthash].js",
+    filename: "[name].[hash].js",
     path: path.resolve(__dirname, "dist")
   },
   module: {
@@ -32,5 +35,9 @@ module.exports = {
         }
       }
     ]
+  },
+  devServer: {
+    contentBase: "./dist",
+    hot: true
   }
 };
