@@ -1,12 +1,7 @@
-import _ from 'lodash';
+import {add, subtract} from './math';
 
-function component() {
-  let element = document.createElement("div");
+let result = add(5,3);
+console.log('5 + 3 : ', result);
+result = subtract(5, 3)
+console.log('5 = 3 : ', result);
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(["Hello", "webpack"], " ");
-
-  return element;
-}
-
-document.body.appendChild(component());
