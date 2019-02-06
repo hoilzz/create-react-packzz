@@ -7,6 +7,7 @@
 > [mode](https://webpack.js.org/concepts/mode/#mode-development)
 > 각 모드에 따라 최적화가 달라진다.
 > dev는 개발의 생산성을 높이기 위한 설정. production은 생산성은 고려하지 않고 실제 서비스 될 때 필요한 최적화 설정이 포함됨.
+> 가장 큰 차이점은 bundle 빌드시 production에서 treeshaking이 가능하고 development는 불가능
 
 ```js
 // webpack.config.js
