@@ -40,7 +40,8 @@ webpack-dev-server는 간단한 web server를 제공하고 live reloading 기능
 module.exports = {
   devServer: {
     contentBase: './dist'
-  }
+  },
+  devtool: 'cheap-module-eval-source-map"
 }
 ```
 
@@ -103,6 +104,9 @@ if (module.hot) {
 그리고 subtract 함수의 연산식을 *,/ 로 바꿔가며 hot module이 제대로 동작하는지 확인하자. hot module 적용하기 전에는 페이지가 새로고침 됐었는데, 이제 새로고침 하지 않고 변경된 코드를 적용한다.
 
 요고는 react-hot-loader를 통해 더 자세히 동작을 알아보자.
+
+> HMR 이용시에 source map이 제대로 동작하지 않는 것을 알 수 있다.
+> 새로고침을 하면 되는데 이유는.. 다음 [링크](https://stackoverflow.com/questions/34723571/webpack-hot-module-replacement-hmr-sourcemaps-not-updated-new-code-not-visib)를 참조하자
 
 ## Summary
 

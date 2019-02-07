@@ -39,5 +39,6 @@ module.exports = {
   devServer: {
     contentBase: "./dist",
     hot: true
-  }
+  },
+  devtool: "cheap-module-eval-source-map"
 };
