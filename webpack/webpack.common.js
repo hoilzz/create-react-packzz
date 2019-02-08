@@ -1,16 +1,27 @@
 const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const distPath = path.resolve(__dirname, "../dist");
+const rootPath = path.resolve(__dirname, "../");
+
 module.exports = {
   entry: {
     app: "./src/index.js"
   },
   output: {
     filename: "[name].[hash].js",
-    path: path.resolve(__dirname, "../dist")
+    path: distPath
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
   },
   plugins: [
-    new CleanWebpackPlugin(["dist"]),
+    new CleanWebpackPlugin([distPath], {
+      root: rootPath
+    }),
     new HtmlWebpackPlugin({
       title: "Production"
     })
