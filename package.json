@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --env=prod",
-    "start": "webpack-dev-server --env=dev"
+    "start": "webpack-dev-server --env=dev",
+    "dev-analyzer": "npm run start -- --addons=bundleanalyzer",
+    "build-analyzer": "npm run build -- --addons=bundleanalyzer"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +19,7 @@
     "clean-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.29.0",
+    "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14",
     "webpack-merge": "^4.2.1",
