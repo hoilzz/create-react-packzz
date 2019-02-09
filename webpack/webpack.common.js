@@ -1,4 +1,6 @@
+const argv = require("yargs").argv;
 const path = require("path");
+
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -10,7 +12,10 @@ module.exports = {
     app: "./src/index.js"
   },
   output: {
-    filename: "[name].[hash].js",
+    filename:
+      argv.env === "prod"
+        ? "[name].[contenthash].js"
+        : "[name].bundle.js",
     path: distPath
   },
   optimization: {
@@ -18,8 +23,8 @@ module.exports = {
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
+          name: "vendors",
+          chunks: "all"
         }
       }
     }
