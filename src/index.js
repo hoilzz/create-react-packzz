@@ -3,9 +3,9 @@ import Print from './print';
 import _ from "lodash";
 
 let result = add(5, 3);
-console.log("5 + 3 : ", result);
+console.log("5 + 3 :: ", result);
 
-const k = _.join(["hoil", "zz", "dd"], "-");
+const k = _.join(["hoil", "zz", "ddd"], "-");
 
 console.log(k);
 Print('hello hoils');

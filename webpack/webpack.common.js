@@ -18,6 +18,10 @@ module.exports = {
         : "[name].bundle.js",
     path: distPath
   },
+  resolve: {
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    extensions: ['.js', '.jsx']
+  },
   optimization: {
     splitChunks: {
       cacheGroups: {

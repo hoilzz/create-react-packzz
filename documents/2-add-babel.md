@@ -74,6 +74,7 @@ module: {
 - exclude : 바벨 로더는 느림. 가능한 적은 양의 파일만 transforming 해야함. transforming할 필요가 없는 node_modules를 제외.
 - use : 사용할 모듈 및 모듈에 대한 옵션 작성.
   - 요 설정이 너무 길어질거 같으면 babel.config.js 파일을 따로 생성하여 관리.
+- include : 로더 모듈이 실제로 필요한 얘들만 transform 하도록 할 수 있다. (__필요한 최소 모듈만 로더에 적용하면 빌드 퍼포먼스가 개선되기 때문에 다른 loader 이용시에도 필수로 사용하자.__)
 
 > babel-loader가 느리기 때문에 더 빠르게 하려면
 > cacheDirectory 옵션을 이용하자. 
