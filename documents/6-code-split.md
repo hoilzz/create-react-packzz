@@ -89,6 +89,21 @@ export default () => {
 
 이 코드는 지우자. react 적용할 때 다시 알아보자.
 
+## Bundle 분석하기
+(귀찮으면 스킵하거나 [복붙](https://github.com/hoilzz/create-react-boilerplate-hoil/commit/446cf8593ee4b8c1a5532b1e0a8a6636748d65cc)하자.)
+code split하기 시작하면, output을 분석하는 것은 유용하다.
+
+가장 인기가 많은 [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)를 설치하여 이용해보자. 
+
+얘로 할 수 있는 건
+- bundle 내부에 __진짜로__ 뭐가 있는지 나타낸다
+- 크기를 많이 차지하는 모듈을 확인할 수 있다.
+- 실수로 번들에 추가된 모듈을 찾을 수도 있다.
+- 제일 좋은건 minified bundle을 지원하고, 번들링된 모듈의 real size, gzipped size를 알 수 있다!
+
+
+
+
 ## SplitChunksPlugin
 
 SplitChunksPlugin에 대해 자세히 알아보자. 자세히 알아보기 싫으면 아래 코드만 적용하자.
