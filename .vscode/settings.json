@@ -1,0 +1,7 @@
+{
+  "eslint.options": {
+    "configFile": "./.eslintrc.js"
+  },
+  "editor.formatOnSave": true,
+  "eslint.autoFixOnSave": true
+}
