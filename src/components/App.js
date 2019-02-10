@@ -3,18 +3,19 @@ import { hot } from "react-hot-loader/root";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from "./Home";
-import AsyncPage from "./AsyncPage";
-import NoPage from "./NoPage";
+
+const AsyncPage = React.lazy(() => import(/* webpackChunkName: "AsyncPage" */ "./AsyncPage"));
+const NoPage = React.lazy(() => import(/* webpackChunkName: "Nopage" */ "./NoPage"));
 
 const App = () => (
   <Router>
-    <div>
+    <React.Suspense fallback={<div>loading...</div>}>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/async" component={AsyncPage} />
         <Route component={NoPage} />
       </Switch>
-    </div>
+    </React.Suspense>
   </Router>
 );
 

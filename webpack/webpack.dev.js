@@ -7,7 +7,9 @@ module.exports = {
   ],
   devServer: {
     contentBase: "./dist",
-    hot: true
+    hot: true,
+    open: true,
+    historyApiFallback: true
   },
   devtool: "cheap-module-eval-source-map",
 }
