@@ -1,11 +1,19 @@
-import React from "react";
-import { hot } from "react-hot-loader/root";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { hot } from 'react-hot-loader/root';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from 'react-router-dom';
 
-import Home from "./Home";
+import Home from './Home';
 
-const AsyncPage = React.lazy(() => import(/* webpackChunkName: "AsyncPage" */ "./AsyncPage"));
-const NoPage = React.lazy(() => import(/* webpackChunkName: "Nopage" */ "./NoPage"));
+const AsyncPage = React.lazy(() =>
+  import(/* webpackChunkName: "AsyncPage" */ './AsyncPage'),
+);
+const NoPage = React.lazy(() =>
+  import(/* webpackChunkName: "Nopage" */ './NoPage'),
+);
 
 const App = () => (
   <Router>
