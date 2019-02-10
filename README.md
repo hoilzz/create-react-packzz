@@ -1,2 +1,2 @@
-# create-react-boilerplate-hoil
+# create-react-packzz
 
