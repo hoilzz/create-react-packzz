@@ -71,7 +71,7 @@ function installPakcages(projectName) {
 }
 
 function suggestShell(projectName) {
-  console.log(`\n\n ${chalk.yello('cd')} ${projectName}`);
+  console.log(`\n\n ${chalk.yellow('cd')} ${projectName}`);
   console.log(`${chalk.yellow('npm start')}`);
 }
 
