@@ -71,7 +71,7 @@ function installPakcages(projectName) {
 }
 
 function suggestShell(projectName) {
-  console.log(`\n\n ${chalk.yellow('cd')} ${projectName}`);
+  console.log(`${chalk.yellow('cd')} ${projectName}`);
   console.log(`${chalk.yellow('npm start')}`);
 }
 
@@ -85,7 +85,7 @@ async function startTasks() {
   // 3. [4/4] npm i 하기
   installPakcages(projectName);
   // 명령문 설명해주기.
-  suggestShell();
+  suggestShell(projectName);
 }
 
 startTasks();
