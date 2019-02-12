@@ -8,114 +8,84 @@ const path = require("path");
 const execSync = require("child_process").execSync;
 const inquirer = require("inquirer");
 const chalk = require("chalk");
-const question = {
-  type: "input",
-  name: "serviceId",
-  message: "프로젝트 이름을 작성해주세요.",
-  default: "defaultServiceId"
-};
-const handlebars = require("handlebars");
-const devices = ["m", "p"];
 
-process.on("exit", () => console.log("\nBye~👋"));
+process.on("exit", () => console.log("\nbye👋👋"));
 
-inquirer.prompt([question]).then(({ serviceId }) => {
-  if (serviceId === "") {
-    throw Error("serviceId를 입력해주세요.");
+async function askProjectName() {
+  const question = {
+    type: "input",
+    name: "projectName",
+    message: `${chalk.gray("[1/4]")} 💡 enter project name :`
+  };
+
+  const { projectName } = await inquirer.prompt([question]);
+  if (!projectName || projectName === "") {
+    throw Error("please enter project name..");
   }
-  console.log(`✅  the service id : ${chalk.bgGreen(serviceId)}`);
 
-  tmonReactStarter()
-    .then(async () => {
-      await setBoilerplate(serviceId);
-    })
-    .catch(e => {
-      console.log("⛔️ ", e);
-    });
-});
+  // console.log(`\nyour project name : ${chalk.blue(projectName)}`);
 
-function setBoilerplate(serviceId) {
-  const pathToCopy = path.join(process.cwd(), `${serviceId}`);
+  return projectName;
+}
+
+function setBoilerplate(projectName) {
+  const pathToCopy = path.resolve(process.cwd(), `${projectName}`);
 
   if (!fs.existsSync(pathToCopy)) {
     fs.mkdirSync(pathToCopy);
   } else {
-    throw Error(`/${serviceId}는 이미 존재하는 디렉토리입니다.`);
+    throw Error(`${chalk.red(`/${projectName} is already exists.`)}`);
   }
 
-  console.log("✅  Setting boilerplate...");
+  process.stdout.write(
+    `${chalk.green("!")} ${chalk.gray("[3/4]")} 🎢  Setting boilerplate....  `
+  );
 
-  console.log(`✅  create ${chalk.green(`.workconfig-${serviceId}`)}`);
+  fse.copySync(path.resolve(__dirname, "boilerplate"), pathToCopy);
 
-  devices.forEach(function(d) {
-    const devicePath = path.join(pathToCopy, d);
-    fs.mkdirSync(devicePath);
-    fse.copySync(path.join(__dirname, "/boilerplate/"), devicePath);
-
-    // gitignore -> .gitignore
-    fs.renameSync(
-      path.join(devicePath, "gitignore"),
-      path.join(devicePath, ".gitignore")
-    );
-    fs.renameSync(
-      path.join(devicePath, "npmrc"),
-      path.join(devicePath, ".npmrc")
-    );
-
-    fs.writeFileSync(
-      path.join(devicePath, `.workconfig-${serviceId}`),
-      handlebars.compile(
-        fs.readFileSync(
-          path.join(__dirname, "template/workconfig.hbs"),
-          "utf-8"
-        )
-      )({ serviceId, device: d })
-    );
-  });
-
-  console.log("✅  setting boilerplate successfully!");
+  console.log("✅  Success!");
 }
 
-function shouldUseNpm() {
-  console.log("✅  Checking npm...");
+function checkNpmAvailable() {
+  process.stdout.write(
+    `${chalk.green("?")} ${chalk.gray(
+      "[2/4]"
+    )} 🧙‍  I'll check if you're using the ${chalk.bold("npm....  ")}`
+  );
 
   try {
     execSync("npm --version");
     console.log("✅  Ok !");
-    return true;
   } catch (e) {
-    console.log("✅  Nope !");
-    return false;
+    console.log(
+      "⛔️ Please install package manager(https://yarnpkg.com/lang/en/ or https://nodejs.org/en/) !!!! "
+    );
   }
 }
 
-function shouldUseYarn() {
-  console.log("✅  Checking yarnpkg...");
-
-  try {
-    execSync("yarnpkg --version");
-    console.log("✅  Ok !");
-    return true;
-  } catch (e) {
-    console.log("✅  Nope !");
-    return false;
-  }
+function installPakcages(projectName) {
+  process.stdout.write(
+    `${chalk.green("!")} ${chalk.gray("[4/4]")} 🧙‍  install Packages..`
+  );
+  execSync(`cd ${projectName} && npm install`, { stdio: "inherit" });
 }
 
-function tmonReactStarter() {
-  return new Promise((resolve, reject) => {
-    const useNpm = shouldUseNpm();
-    const useYarn = useNpm ? false : shouldUseYarn();
-
-    if (useNpm) {
-      resolve("npm");
-    } else if (useYarn) {
-      resolve("yarn");
-    } else {
-      reject({
-        msg:
-          "⛔️ Please install package manager(https://yarnpkg.com/lang/en/ or https://nodejs.org/en/) !!!! "
-      });
-    }
-  });
+function suggestShell(projectName) {
+  console.log(`\n\n ${chalk.yello('cd')} ${projectName}`);
+  console.log(`${chalk.yellow('npm start')}`);
 }
+
+async function startTasks() {
+  // 1. [1/1] 질문받기
+  const projectName = await askProjectName();
+  // 1. [2/4] npm 사용하는지 확인하기
+  checkNpmAvailable();
+  // 2. [3/4] 복붙하기
+  setBoilerplate(projectName);
+  // 3. [4/4] npm i 하기
+  installPakcages(projectName);
+  // 명령문 설명해주기.
+  suggestShell();
+}
+
+startTasks();

@@ -1,12 +1,9 @@
 {
-  "name": "create-tmon-webapp",
-  "version": "2.0.0",
-  "author": "TMON Standard Dev Unit <StandardDevUnit@tmon.co.kr>",
+  "name": "create-react-packzz",
+  "version": "0.1.0",
+  "author": "hoilzz <hoilzz@gmail.com>",
   "description": "tmon react redux boilerplate with webpack v4, eslint",
   "license": "UNLICENSED",
-  "publishConfig": {
-    "registry": "http://pkgrepos.tmonc.net:8080/nexus/content/repositories/npm-internal/"
-  },
   "bin": {
     "create-tmon-webapp": "./index.js"
   },
