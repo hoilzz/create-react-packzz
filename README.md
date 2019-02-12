@@ -8,6 +8,7 @@ If you use vscode, I recommend you to install the vscode extension(prettier, esl
 
 ```
 $ npx install create-react-packzz
+$ cd ${projectName}
 $ npm start
 ```
 
