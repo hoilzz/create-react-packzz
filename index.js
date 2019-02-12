@@ -11,7 +11,7 @@ const chalk = require("chalk");
 const question = {
   type: "input",
   name: "serviceId",
-  message: "serviceId를 입력하세요.",
+  message: "프로젝트 이름을 작성해주세요.",
   default: "defaultServiceId"
 };
 const handlebars = require("handlebars");
