@@ -3,7 +3,11 @@
   "version": "0.1.4",
   "author": "hoilzz <hoilzz@gmail.com>",
   "description": "tmon react redux boilerplate with webpack v4, eslint",
-  "license": "UNLICENSED",
+  "license": "MIT",
+  "homepage": "https://github.com/hoilzz/create-react-packzz",
+  "bugs": {
+    "url": "https://github.com/hoilzz/create-react-packzz/issues"
+  },
   "bin": {
     "create-tmon-webapp": "./index.js"
   },
@@ -12,5 +16,11 @@
     "fs-extra": "^7.0.0",
     "handlebars": "^4.0.12",
     "inquirer": "^6.2.0"
-  }
+  },
+  "keywords": [
+    "react",
+    "webpack",
+    "webpack-dev-server",
+    "create-react-app"
+  ]
 }
