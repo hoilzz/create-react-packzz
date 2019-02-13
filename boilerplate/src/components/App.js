@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import Home from './Home';
+import './styles.css';
 
 const AsyncPage = React.lazy(() =>
   import(/* webpackChunkName: "AsyncPage" */ './AsyncPage'),
