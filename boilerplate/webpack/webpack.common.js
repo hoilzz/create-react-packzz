@@ -1,59 +1,74 @@
-const argv = require("yargs").argv;
-const path = require("path");
+const path = require('path');
 
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const distPath = path.resolve(__dirname, "../dist");
-const rootPath = path.resolve(__dirname, "../");
-const publicPath = path.resolve(__dirname, "../public");
+const distPath = path.resolve(__dirname, '../dist');
+const rootPath = path.resolve(__dirname, '../');
+const publicPath = path.resolve(__dirname, '../public');
+
+const isProdMode = process.env.NODE_ENV === 'production';
 
 module.exports = {
   entry: {
-    app: "./src/index.js"
+    app: './src/index.js',
   },
   output: {
-    filename:
-      argv.env === "prod" ? "[name].[contenthash].js" : "[name].bundle.js",
-    path: distPath
+    filename: isProdMode
+      ? 'js/[name].[contenthash].js'
+      : 'js/[name].bundle.js',
+    path: distPath,
   },
   resolve: {
-    modules: [path.resolve(__dirname, "src"), "node_modules"],
-    extensions: [".js", ".jsx"]
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    extensions: ['.js', '.jsx', 'scss', 'css'],
   },
   optimization: {
     splitChunks: {
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,
-          name: "vendors",
-          chunks: "all"
-        }
-      }
-    }
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
   },
   plugins: [
     new CleanWebpackPlugin([distPath], {
-      root: rootPath
+      root: rootPath,
     }),
     new HtmlWebpackPlugin({
-      title: "Production",
-      template: path.join(publicPath, "index.html")
-    })
+      title: 'Production',
+      template: path.join(publicPath, 'index.html'),
+    }),
+    new MiniCssExtractPlugin({
+      filename: isProdMode ? 'css/[name].[hash].css': 'css/[name].css',
+      chunkFilename: isProdMode ? 'css/[id].[hash].css': 'css/[id].css' ,
+    }),
   ],
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        include: path.join(rootPath, "src"),
+        include: path.join(rootPath, 'src'),
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            cacheDirectory: true
-          }
-        }
-      }
-    ]
-  }
+            cacheDirectory: true,
+          },
+        },
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          isProdMode ? MiniCssExtractPlugin.loader : 'style-loader' ,
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+    ],
+  },
 };
