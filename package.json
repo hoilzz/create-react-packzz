@@ -1,6 +1,6 @@
 {
   "name": "create-react-packzz",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "hoilzz <hoilzz@gmail.com>",
   "description": "tmon react redux boilerplate with webpack v4, eslint",
   "license": "MIT",
