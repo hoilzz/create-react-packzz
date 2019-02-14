@@ -18,7 +18,7 @@ you can use the important features of webpack.
 ## Getting Started
 
 ```
-$ npx install create-react-packzz
+$ npx create-react-packzz
 $ cd ${projectName}
 $ npm start
 ```
