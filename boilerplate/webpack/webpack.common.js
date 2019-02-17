@@ -52,6 +52,12 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        enforce: 'pre',
+        exclude: /node_modules/,
+        loader: 'eslint-loader'
+      },
+      {
+        test: /\.js$/,
         exclude: /node_modules/,
         include: path.join(rootPath, 'src'),
         use: {
