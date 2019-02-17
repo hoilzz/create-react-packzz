@@ -1,15 +1,19 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
-  mode: "development",
+  mode: 'development',
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
-    contentBase: "./dist",
+    contentBase: path.resolve(__dirname, '../dist'),
     hot: true,
     open: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    publicPath: '/',
+    overlay: true,
   },
-  devtool: "cheap-module-eval-source-map",
-}
+  devtool: 'cheap-module-eval-source-map',
+};

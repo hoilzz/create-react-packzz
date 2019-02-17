@@ -1,6 +1,6 @@
 # eslint, prettier
 
-이건 꼭 쓰세요. velopert님이 너무너무 잘 [정리](https://velog.io/@velopert/eslint-and-prettier-in-react)해주셔서 꼭 쓰세요. 두 번 쓰세요.
+eslint, prettier를 사용하면 생산성이 높아집니다. velopert님이 너무너무 잘 [정리](https://velog.io/@velopert/eslint-and-prettier-in-react)해주셔서 요기 참고 부탁드립니다.
 
 대신 위에 없는 내용만 다뤄보겠습니다.
 
@@ -19,15 +19,31 @@ Parsing error: Unexpected token import
 babel-eslint를 이용하면 eslint가 이해할 수 있도록 babel parser가 먼저 파싱을 진행한다.
 
 ```
-npm i -D eslint babel-eslint 
+npm i -D eslint babel-eslint
 ```
 
 ```js
 // .eslintrc.js
 module.exports = {
   //...
-  parser: "babel-eslint",
+  parser: "babel-eslint"
+};
+```
+
+## eslint-loader
+
+컴파일시에 **가장먼저** eslint를 통해 lint 검사를 거치도록 해보자.
+
+```js
+// webpack.common.js
+{
+  test: /\.js$/,
+  enforce: 'pre',
+  exclude: /node_modules/,
+  loader: 'eslint-loader'
 }
 ```
+
+`enforce: 'pre'`는 말 그대로 다른 loader보다 미리 수행하도록 강제하는 옵션이다. 바벨로 트랜스파일 하기 전에 lint 검사를 해야하기 때문이다.
 
 이케하면 끝난다~
