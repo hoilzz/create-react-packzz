@@ -1,1 +1,2 @@
-webpack/
+webpack/*
+__tests__/*
