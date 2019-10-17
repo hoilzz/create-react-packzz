@@ -1,6 +1,6 @@
 {
   "name": "create-react-boilerplate-hoil",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "react boilerplate made by hoil",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.0.0",
+    "eslint-import-resolver-webpack": "^0.11.1",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",

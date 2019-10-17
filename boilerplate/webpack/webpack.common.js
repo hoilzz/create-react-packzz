@@ -1,6 +1,4 @@
 const path = require('path');
-
-const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -10,8 +8,10 @@ const rootPath = path.resolve(__dirname, '../');
 const publicPath = path.resolve(__dirname, '../public');
 
 const isProdMode = process.env.NODE_ENV === 'production';
+const webpackMerge = require('webpack-merge');
+const resolve = require('./resolve');
 
-module.exports = {
+module.exports = webpackMerge(resolve, {
   entry: {
     app: ['./src/config/index', './src/index.js'],
   },
@@ -21,10 +21,6 @@ module.exports = {
       : 'js/[name].bundle.js',
     path: distPath,
     publicPath: '/',
-  },
-  resolve: {
-    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-    extensions: ['.js', '.jsx', 'scss', 'css'],
   },
   optimization: {
     splitChunks: {
@@ -83,4 +79,4 @@ module.exports = {
       },
     ],
   },
-};
+});
