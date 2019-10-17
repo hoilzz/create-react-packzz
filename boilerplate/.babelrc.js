@@ -1,17 +1,17 @@
 module.exports = {
   presets: [
     [
-      "@babel/preset-env",
+      '@babel/preset-env',
       {
         modules: false,
-        useBuiltIns: "usage",
-        targets: "> 0.25%, not dead"
-      }
+        useBuiltIns: 'usage',
+        targets: '> 0.25%, not dead',
+      },
     ],
-    "@babel/preset-react"
+    '@babel/preset-react',
   ],
   plugins: [
-    "@babel/plugin-syntax-dynamic-import",
-    "react-hot-loader/babel"
-  ]
+    ['@babel/plugin-transform-runtime'],
+    'react-hot-loader/babel',
+  ],
 };
