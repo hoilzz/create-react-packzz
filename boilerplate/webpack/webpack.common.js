@@ -13,7 +13,7 @@ const isProdMode = process.env.NODE_ENV === 'production';
 
 module.exports = {
   entry: {
-    app: './src/index.js',
+    app: ['./src/config/index', './src/index.js'],
   },
   output: {
     filename: isProdMode
